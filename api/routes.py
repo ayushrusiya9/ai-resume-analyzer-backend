@@ -4,6 +4,7 @@ from app.models.schema import ResumeRequest, ResumeResponse
 from app.services.pdf_parser import extract_text_from_pdf
 from app.services.skill_extractor import extract_skills
 from app.services.matcher import calculate_match_percentage, missing_skills
+from app.services.ai_service import generate_suggestions
 
 router = APIRouter()
 
@@ -54,11 +55,11 @@ async def analyze_resume(
     per = calculate_match_percentage(extract_resume_skill, extract_jd_skill)
     missing_skill = missing_skills(extract_resume_skill,extract_jd_skill)
 
-    suggetion = ["ai integtration panding!!"]
+    ai_suggetion = generate_suggestions(resume.job_title, extract_resume_skill, missing_skill)
     
     return ResumeResponse(
         match_score=per,
         resume_skills=extract_resume_skill,
         missing_skills=missing_skill,
-        suggestions=suggetion
+        suggestions=ai_suggetion
     )

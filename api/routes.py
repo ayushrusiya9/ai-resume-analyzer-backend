@@ -55,7 +55,7 @@ async def analyze_resume(
     per = calculate_match_percentage(extract_resume_skill, extract_jd_skill)
     missing_skill = missing_skills(extract_resume_skill,extract_jd_skill)
 
-    ai_suggetion = generate_suggestions(resume.job_title, extract_resume_skill, missing_skill)
+    ai_suggetion = await generate_suggestions(resume.job_title, extract_resume_skill, missing_skill)
     
     return ResumeResponse(
         match_score=per,

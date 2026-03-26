@@ -1,11 +1,12 @@
 import time
 from google import genai
 from app.config.settings import GEMINI_API_KEY
-
+import anyio
 # Initialize client with API key from settings
 client = genai.Client(api_key=GEMINI_API_KEY)
 
-def generate_suggestions(role, resume_skills, missing_skills):
+async def generate_suggestions(role, resume_skills, missing_skills):
+    """Generate AI suggestions for improving resume based on missing skills"""
 
     # Avoid unnecessary API calls
     if not missing_skills:
@@ -29,14 +30,14 @@ def generate_suggestions(role, resume_skills, missing_skills):
 
     try:
         # Delay to avoid rate limit
-        time.sleep(5)
+        await anyio.sleep(5)
 
-        response = client.models.generate_content(
+        response = await client.models.generate_content(
             model="gemini-2.5-flash",  # stable model
             contents=prompt
         )
 
-        text = response.text.strip()
+        text =  response.text.strip()
 
         # Clean output
         suggestions = [

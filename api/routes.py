@@ -19,8 +19,7 @@ def get_resume_request(
         job_title=job_title,
         job_description=job_description
     )
-        
-        
+
 # Endpoint to analyze resume
 @router.post('/analyze-resume')
 async def analyze_resume(
@@ -61,5 +60,5 @@ async def analyze_resume(
         match_score=per,
         resume_skills=extract_resume_skill,
         missing_skills=missing_skill,
-        suggestions=ai_suggetion
+        suggestions=ai_suggetion,
     )

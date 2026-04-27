@@ -1,10 +1,10 @@
 from typing import Annotated
 from fastapi import APIRouter, File, UploadFile, Form, Depends, HTTPException
-from app.models.schema import ResumeRequest, ResumeResponse
-from app.services.pdf_parser import extract_text_from_pdf
-from app.services.skill_extractor import extract_skills
-from app.services.matcher import calculate_match_percentage, missing_skills
-from app.services.ai_service import generate_suggestions
+from models.schema import ResumeRequest, ResumeResponse
+from services.pdf_parser import extract_text_from_pdf
+from services.skill_extractor import extract_skills
+from services.matcher import calculate_match_percentage, missing_skills
+from services.ai_service import generate_suggestions
 
 router = APIRouter()
 

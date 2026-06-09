@@ -1,4 +1,5 @@
-import fitz # PyMuPDF
+import fitz  # PyMuPDF
+
 
 def extract_text_from_pdf(pdf_bytes_or_path):
     """Extract text from a PDF file given as bytes or file path"""
@@ -9,4 +10,3 @@ def extract_text_from_pdf(pdf_bytes_or_path):
     pages = [page.get_text() for page in doc]
     doc.close()
     return "\n".join(pages)
-    

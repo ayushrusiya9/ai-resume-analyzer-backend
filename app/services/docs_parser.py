@@ -14,7 +14,7 @@ def extract_text_from_docx(docx_bytes_or_path: Union[bytes, str]) -> str:
     Requires the `python-docx` package (importable as `docx`).
     """
     if Document is None:
-        raise RuntimeError("python-docx is required to parse .docx files; install with `pip install python-docx`")
+        raise RuntimeError("python docx is required to parse .docx files; install with `pip install python-docx`")
 
     if isinstance(docx_bytes_or_path, (bytes, bytearray)):
         fh = io.BytesIO(docx_bytes_or_path)
